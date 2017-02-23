@@ -29,8 +29,7 @@ def global_reader(reader, time_index, hr_index, time_format):
         else:
             hr = 0
 
-        item = (time, hr)
-        data_list.append(item)
+        data_list.append([time, hr])
 
     return data_list
 

@@ -25,7 +25,7 @@ def reduct(data, start_time, end_time, period):
             if row[0] < start_time:
                 continue
             if row[0] - start_time >= period and counter is not 0:
-                result.append((start_time, bpm_sum / counter))
+                result.append([start_time, bpm_sum / counter])
                 bpm_sum = counter = 0
                 start_time += period
 
@@ -34,10 +34,24 @@ def reduct(data, start_time, end_time, period):
                 counter += 1
 
         if counter is not 0:
-            result.append((start_time, bpm_sum / counter))
+            result.append([start_time, bpm_sum / counter])
 
     except TypeError:
         log.warning("Can not reduce list. Incompatible type.")
         return []
 
     return result
+
+
+def time_shift(data, shift_seconds):
+    shift_time = timedelta(seconds=shift_seconds)
+    shifted_list = []
+
+    try:
+        for item in data:
+            shifted_list.append([item[0]+shift_time, item[1]])
+    except TypeError:
+        log.warning("Can not shift list. Incompatible types.")
+        return data
+
+    return shifted_list

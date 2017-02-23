@@ -10,10 +10,10 @@ def time_convert(time_value, time_format):
         return datetime.fromtimestamp(int(time_value))
 
     if time_format is time_definition['ms']:
-        return datetime.fromtimestamp(int(time_value)/1000)
+        return datetime.fromtimestamp(int(int(time_value)/1000))
 
     if time_format is time_definition['us']:
-        return datetime.fromtimestamp(int(time_value)/1000000)
+        return datetime.fromtimestamp(int(int(time_value)/1000000))
 
     return datetime.strptime(time_value, time_format)
 

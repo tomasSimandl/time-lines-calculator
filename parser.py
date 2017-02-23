@@ -1,5 +1,4 @@
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 import calculations.data_reduction as reductor
 import calculations.calculations as calculation
 import data_reading.reading as reader
